@@ -47,9 +47,9 @@ In our case, we were interested in retrieving nucleotide sequences for core gene
 
 However, there were no distinguishing features that linked all types of ID. As an example, for the same record, the following IDs apply:
 
-Ortholog output: Xylscr1_99687 
-Amino acid fasta header: >jgi|Xylscr1|99687|CE99686_5963 
-Nucleotide fasta header: >jgi|Xylscr1|100117|CE99686_5963 
+* Ortholog output: Xylscr1_99687 
+* Amino acid fasta header: >jgi|Xylscr1|99687|CE99686_5963 
+* Nucleotide fasta header: >jgi|Xylscr1|100117|CE99686_5963 
 
 One can easily link ortholog id to the amino acid fasta header since they have **99687** in common. To link the aa id to nt id, we need to search the gff3 file for each taxa, which contains this information:
 
