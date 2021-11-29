@@ -8,12 +8,34 @@ A script to retrieve associated nucleotide sequence records for amino acid seque
 
 **The program uses as input**
 
-* A file containig a list of selected ortholog group IDs `(-l, --listog)`
+* A file containing a list of selected ortholog group IDs `(-l, --listog)`
 * A file containing a table of taxon-sequence IDs per ortholog group, usually output from an ortholog inference program `(-o, orthog)`
 * GFF3 files for each taxa `(-g, gff)`
 * Nucleotide fasta files for each taxa `(-f, fasta)`
 * List of taxa of interest, can be supplied as a text file with one taxon name per line `(-t, taxalist)`
 * Users can also specify verbose output (e.g. print what step the script is on) `(-v, verbose)`
+
+```
+usage: aa2nt.py [-h] -l listog -o ortho -g gff [gff ...] -f fasta [fasta ...] -t TAXALIST [TAXALIST ...] [-v]
+
+Get arguments for script
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -l listog, --listog listog
+                        Ortholog groups of interest (default: None)
+  -o ortho, --orthog ortho
+                        Ortholog groups with member sequence ids (default: None)
+  -g gff [gff ...], --gff gff [gff ...]
+                        GFF3 files (default: None)
+  -f fasta [fasta ...], --fasta fasta [fasta ...]
+                        nucleotide fasta (default: None)
+  -t TAXALIST [TAXALIST ...], --taxalist TAXALIST [TAXALIST ...]
+                        list of taxa as in same format as fasta files (default: None)
+  -v, --verbose         Print out updates (default: False)
+
+
+```
 
 **Examples** 
 
@@ -31,7 +53,7 @@ Taxalist supplied as argument:
 
 **Output**
 
-Nucleotide fasta file only containing sequences of interest, saved in the current script directory as __{taxon}.filtered.nt.fasta__
+Nucleotide fasta file only containing sequences of interest, saved in the current script directory as `{taxon}.filtered.nt.fasta`
 
 ### Problem Addressed
 
