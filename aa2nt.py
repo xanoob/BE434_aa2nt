@@ -45,7 +45,7 @@ def get_args():
     parser.add_argument('-f',
                         '--fasta',
                         nargs='+',
-                        help='fasta',
+                        help='nucleotide fasta ',
                         metavar='fasta',
                         type=argparse.FileType('rt'),
                         default=None)
@@ -57,17 +57,24 @@ def get_args():
                         type=str,
                         default=None)
 
-    return parser.parse_args()
+    args = parser.parse_args()
 
+    for entry in args.taxalist:
+        if os.path.isfile(entry):
+            with open(entry, 'rt', encoding='utf-8') as in_f:
+                args.taxalist = in_f.read().splitlines()
+
+
+    return args
 
 # --------------------------------------------------
 def main():
     """Main function"""
 
     args = get_args()
+
     oglist = ognames(args.listog)
     ogmember = ogmembers(oglist, args.orthog)
-    # taxalist = ['Xylcub1', 'Xylcube1', 'Xylcur114988_1', 'Xylscr1']
     taxalist = args.taxalist
     bytaxa_aa_dict = bytaxa_aa(taxalist, ogmember)
     aa2nt_dict = aa_to_nt(args.gff)
@@ -80,7 +87,7 @@ def ognames(oginput) -> list:
     """ return list from file of OG names """
 
     ognames = [og.rstrip() for og in oginput]
-    return(ognames)
+    return ognames
 
 
 def ogmembers(oglist, ogtable) -> dict:
@@ -89,7 +96,7 @@ def ogmembers(oglist, ogtable) -> dict:
     orthodict = {line.split()[0].replace(':', '') : line.split()[1:] for line in ogtable}
     orthosub = {OG: orthodict[OG] for OG in oglist} # subset of dict in oglist
 
-    return(orthosub)
+    return orthosub
 
 
 def bytaxa_aa(taxalist, ogmember) -> dict:
@@ -105,7 +112,7 @@ def bytaxa_aa(taxalist, ogmember) -> dict:
             bytaxa_aa[taxon].extend(match_aa)
         print(f"{len(bytaxa_aa[taxon])} aa ids in OG for {taxon}")
 
-    return(bytaxa_aa)
+    return bytaxa_aa
 
 
 def bytaxa_nt(bytaxa_aa, aa2nt_dict) -> dict:
@@ -121,7 +128,8 @@ def bytaxa_nt(bytaxa_aa, aa2nt_dict) -> dict:
 
     end = process_time()
     print(f"Done building nt dict, elapsed time {end - start}")
-    return(nucsearch)
+
+    return nucsearch
 
 
 
@@ -146,7 +154,7 @@ def aa_to_nt(gff_list) -> dict:
     end = process_time()
     print(f"Done building aa2nt dict, elapsed time {end - start}")
 
-    return(aa_to_nt)
+    return aa_to_nt
 
 
 def searchfasta(fastafiles, bytaxa_nt_dict):
@@ -172,7 +180,6 @@ def searchfasta(fastafiles, bytaxa_nt_dict):
         keep_keys = list(filter(sterms.search,id_dict.keys()))
 
         print(f"{len(keep_keys)} filtered keys for {taxa}")
-
 
         # write files
         with open(outfile, 'w') as outf:
