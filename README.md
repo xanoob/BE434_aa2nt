@@ -29,6 +29,9 @@ Taxalist supplied as argument:
 
 ```
 
+**Output**
+
+Nucleotide fasta file only containing sequences of interest, saved in the current script directory as __{taxon}.filtered.nt.fasta__
 
 ### Problem Addressed
 
