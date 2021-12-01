@@ -41,15 +41,15 @@ optional arguments:
 
 Taxa list as text file:
 ```
-./aa2nt.py -l example_inputs/listOGs.txt -o example_inputs/OGmembers.txt -g example_inputs/*.gff3 / 
--f example_inputs/*.fasta -t example_inputs/taxalist.txt -v
+./aa2nt.py -l example_inputs/listOGs.txt -o example_inputs/OGmembers.txt -g example_inputs/*.gff3 // 
+    -f example_inputs/*.fasta -t example_inputs/taxalist.txt -v
 
 ```
 
 Taxalist supplied as argument:
 ```
-./aa2nt.py -l example_inputs/listOGs.txt -o example_inputs/OGmembers.txt -g example_inputs/*.gff3 / 
--f example_inputs/*.fasta -t Xylcub1 Xylscr1 -v
+./aa2nt.py -l example_inputs/listOGs.txt -o example_inputs/OGmembers.txt -g example_inputs/*.gff3 //
+    -f example_inputs/*.fasta -t Xylcub1 Xylscr1 -v
 
 ```
 
@@ -86,3 +86,9 @@ scaffold_1	prediction	gene	4997	7713	0	-	.	ID=gene_2;Name=jgi.p|Xylscr1|99687;po
 ```
 
 The script connects all three to retrieve the nucleotide id which can be used to pull out specific fasta sequences.
+
+***
+
+Author: Xan Bantay (xannby@email.arizona.edu)
+
+
