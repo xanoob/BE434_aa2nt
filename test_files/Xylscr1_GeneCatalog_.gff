@@ -1,0 +1,2 @@
+scaffold_1	prediction	gene	4997	7713	0	-	.	ID=gene_2;Name=jgi.p|Xylscr1|270;portal_id=Xylscr1;product_name=expressed protein;proteinId=448861;transcriptId=301
+scaffold_1	prediction	exon	6724	7713	.	-	.	ID=exon_2_1;Parent=mRNA_2
