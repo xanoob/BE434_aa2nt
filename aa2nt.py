@@ -104,7 +104,7 @@ def ognames(oginput) -> list:
 
 def test_ognames():
     """ test that ognames reads file and returns list"""
-    ogtestlist = open("test_files/listOGs_test.txt")
+    ogtestlist = open("test_inputs/listOGs_test.txt")
     assert(ognames(ogtestlist)) == ['OG0000001', 'OG0000002']
 
 def ogmembers(oglist, ogtable) -> dict:
@@ -117,8 +117,8 @@ def ogmembers(oglist, ogtable) -> dict:
 
 
 def test_ogmembers():
-    ogtestlist = open("test_files/listOGs_test.txt")
-    ogtestmembers = open("test_files/listOrthogroups_test.txt")
+    ogtestlist = open("test_inputs/listOGs_test.txt")
+    ogtestmembers = open("test_inputs/listOrthogroups_test.txt")
     ogtestlist_results = ognames(ogtestlist)
     assert(ogmembers(ogtestlist_results, ogtestmembers) == {'OG0000001' : ['Xylcub1_466037', 'Xylcur114988_1_4597462', 'Xylscr1_448861'],
                                                             'OG0000002' : ['Xylcub1_129159', 'Xylcur114988_1_88005']})
@@ -142,8 +142,8 @@ def bytaxa_aa(taxalist, ogmember, vflag) -> dict:
 
 def test_bytaxa_aa():
     taxalist = ['Xylcub1', 'Xylcur114988_1', 'Xylscr1']
-    ogtestlist = open("test_files/listOGs_test.txt")
-    ogtestmembers = open("test_files/listOrthogroups_test.txt")
+    ogtestlist = open("test_inputs/listOGs_test.txt")
+    ogtestmembers = open("test_inputs/listOrthogroups_test.txt")
     ogtestlist_results = ognames(ogtestlist)
     ogtestmembers_result = ogmembers(ogtestlist_results, ogtestmembers)
     flag = ''
@@ -180,7 +180,7 @@ def aa_to_nt(gff_list, vflag) -> dict:
 
 def test_aa_to_nt():
 
-    gff_list = ["test_files/Xylcub1_GeneCatalog_.gff", "test_files/Xylcur114988_1_GeneCatalog_.gff", "test_files/Xylscr1_GeneCatalog_.gff"]
+    gff_list = ["test_inputs/Xylcub1_GeneCatalog_.gff", "test_inputs/Xylcur114988_1_GeneCatalog_.gff", "test_inputs/Xylscr1_GeneCatalog_.gff"]
     filedata = {filename: open(filename, 'rt') for filename in gff_list}
     filedata_list = list(filedata.values())
     flag = ''
@@ -208,13 +208,13 @@ def bytaxa_nt(bytaxa_aa, aa2nt_dict, vflag) -> dict:
 def test_bytaxa_nt():
     flag = ''
     taxalist = ['Xylcub1', 'Xylcur114988_1', 'Xylscr1']
-    ogtestlist = open("test_files/listOGs_test.txt")
-    ogtestmembers = open("test_files/listOrthogroups_test.txt")
+    ogtestlist = open("test_inputs/listOGs_test.txt")
+    ogtestmembers = open("test_inputs/listOrthogroups_test.txt")
     ogtestlist_results = ognames(ogtestlist)
     ogtestmembers_result = ogmembers(ogtestlist_results, ogtestmembers)
     bytaxa_aa_result = bytaxa_aa(taxalist, ogtestmembers_result, flag)
 
-    gff_list = ["test_files/Xylcub1_GeneCatalog_.gff", "test_files/Xylcur114988_1_GeneCatalog_.gff", "test_files/Xylscr1_GeneCatalog_.gff"]
+    gff_list = ["test_inputs/Xylcub1_GeneCatalog_.gff", "test_inputs/Xylcur114988_1_GeneCatalog_.gff", "test_inputs/Xylscr1_GeneCatalog_.gff"]
     filedata = {filename: open(filename, 'rt') for filename in gff_list}
     filedata_list = list(filedata.values())
     aa_to_nt_result = (aa_to_nt(filedata_list, flag))
@@ -281,19 +281,19 @@ def test_searchfasta():
 
     flag = ''
     taxalist = ['Xylcub1', 'Xylcur114988_1', 'Xylscr1']
-    ogtestlist = open("test_files/listOGs_test.txt")
-    ogtestmembers = open("test_files/listOrthogroups_test.txt")
+    ogtestlist = open("test_inputs/listOGs_test.txt")
+    ogtestmembers = open("test_inputs/listOrthogroups_test.txt")
     ogtestlist_results = ognames(ogtestlist)
     ogtestmembers_result = ogmembers(ogtestlist_results, ogtestmembers)
     bytaxa_aa_result = bytaxa_aa(taxalist, ogtestmembers_result, flag)
 
-    gff_list = ["test_files/Xylcub1_GeneCatalog_.gff", "test_files/Xylcur114988_1_GeneCatalog_.gff", "test_files/Xylscr1_GeneCatalog_.gff"]
+    gff_list = ["test_inputs/Xylcub1_GeneCatalog_.gff", "test_inputs/Xylcur114988_1_GeneCatalog_.gff", "test_inputs/Xylscr1_GeneCatalog_.gff"]
     filedata = {filename: open(filename, 'rt') for filename in gff_list}
     filedata_list = list(filedata.values())
     aa_to_nt_result = (aa_to_nt(filedata_list, flag))
     bytaxa_nt_result = bytaxa_nt(bytaxa_aa_result, aa_to_nt_result, flag)
 
-    fasta_list = ["test_files/Xylcub1_GeneCatalog_transcripts_.fasta", "test_files/Xylcur114988_1_GeneCatalog_transcripts_.fasta", "test_files/Xylscr1_GeneCatalog_transcripts_.fasta"]
+    fasta_list = ["test_inputs/Xylcub1_GeneCatalog_transcripts_.fasta", "test_inputs/Xylcur114988_1_GeneCatalog_transcripts_.fasta", "test_files/Xylscr1_GeneCatalog_transcripts_.fasta"]
     fasta_data = {filename: open(filename, 'rt') for filename in fasta_list}
     fastadata_list = list(fasta_data.values())
 
