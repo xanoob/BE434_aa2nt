@@ -41,13 +41,15 @@ optional arguments:
 
 Taxa list as text file:
 ```
-./aa2nt.py -l example_inputs/listOGs.txt -o example_inputs/OGmembers.txt -g example_inputs/*.gff3 -f example_inputs/*.fasta -t example_inputs/taxalist.txt -v
+./aa2nt.py -l example_inputs/listOGs.txt -o example_inputs/OGmembers.txt -g example_inputs/*.gff3 / 
+-f example_inputs/*.fasta -t example_inputs/taxalist.txt -v
 
 ```
 
 Taxalist supplied as argument:
 ```
-./aa2nt.py -l example_inputs/listOGs.txt -o example_inputs/OGmembers.txt -g example_inputs/*.gff3 -f example_inputs/*.fasta -t Xylcub1 Xylscr1 -v
+./aa2nt.py -l example_inputs/listOGs.txt -o example_inputs/OGmembers.txt -g example_inputs/*.gff3 / 
+-f example_inputs/*.fasta -t Xylcub1 Xylscr1 -v
 
 ```
 
@@ -62,9 +64,9 @@ Ortholog inference programs (i.e. orthofinder, orthoMCL) utilize amino acid sequ
 **Example orthofinder output table with fasta header based IDs for members in the group**
 
 ```
-OG0000006: Xylacu1_504868 Xylacu1_506276 Xylcas124033_1_547580 Xylcas124033_1_548538 Xylcub1_118760 Xylcub1_354408 Xylcub1_463436 Xylcub1_481024 Xylcub1_505496 Xylcube1_112179
-OG0000007: Xylacu1_188876 Xylacu1_211636 Xylacu1_239015 Xylacu1_334457 Xyllon1_180855 Xyllon1_529536 Xylscr1_129476 Xylscr1_215213 Xylscr1_405676 Xylscr1_414426 Xylscr1_419125 Xylscr1_421215
-OG0000008: Xylacu1_276242 Xylcas124033_1_171284 Xylcas124033_1_265152 Xylcas124033_1_28047 Xylcas124033_1_341743 Xylcas124033_1_454174 Xylcas124033_1_513140 
+OG0000006: Xylacu1_504868 Xylcas124033_1_548538 Xylcub1_118760 Xylcub1_463436 Xylcube1_112179
+OG0000007: Xylacu1_188876 Xylacu1_211636 Xylacu1_239015 Xylacu1_334457 Xyllon1_180855 Xylscr1_405676 
+OG0000008: Xylacu1_276242 Xylcas124033_1_171284 Xylcas124033_1_341743 Xylcas124033_1_454174 
 
 ```
 
